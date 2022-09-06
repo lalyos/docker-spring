@@ -6,7 +6,7 @@ COPY pom.xml mvnw /app/
 COPY .mvn/wrapper/maven-wrapper.properties /app/.mvn/wrapper/
 
 WORKDIR /app
-RUN --mount=type=cache,target=/root/.m2 ./mvnw dependency:resolve
+RUN --mount=type=cache,target=/root/.m2 ./mvnw dependency:resolve dependency:resolve-plugins
 
 COPY . /app
 RUN --mount=type=cache,target=/root/.m2 ./mvnw package -DskipTests
